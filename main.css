@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(4, 4, 34);
+    color: white;
+}
+.main{
+    width: 250px;
+    margin: 0 auto;
+    background-color: rgb(21, 6, 73);
+    padding:12px ;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    margin-top: 100px;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: true;
+}
+.main::after , .main::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image:conic-gradient(from var(--angle),transparent 70% , red , blue,yellow,green, violet);
+    top:50% ;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 15px;
+    animation: 3s spin linear infinite;
+}
+.main::before{
+    opacity: 0.5;
+    filter: blur(1.5rem);
+}
+@keyframes spin{
+    from{
+        --angle:0deg; 
+    }
+    to{
+        --angle:360deg;
+    }
+}
+
